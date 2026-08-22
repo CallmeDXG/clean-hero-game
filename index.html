@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <title>解压清扫 · 3D</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="app"></div>
+
+  <!-- 顶部：房间名 + 清洁度 -->
+  <div class="topbar">
+    <div class="room" id="roomName">温馨卧室</div>
+    <div class="clean-wrap"><div class="clean-bar" id="cleanBar"></div></div>
+    <div class="clean-num" id="cleanNum">0%</div>
+  </div>
+
+  <!-- 金币 + 商店 -->
+  <div class="coin" id="coinHud">💰 <span id="coinNum">0</span><span class="coin-pop" id="coinPop">+0</span></div>
+  <button class="topbtn" id="shopBtn">🛒 商店</button>
+
+  <!-- 底部：工具 -->
+  <div class="toolbar" id="toolbar"></div>
+
+  <!-- 商店面板 -->
+  <div class="shop" id="shop">
+    <div class="panel">
+      <h3>商店 · 金币 <span id="shopCoins">0</span> 💰</h3>
+      <p class="shop-tip">用金币放大清扫工具，刷头更大、扫得更轻松</p>
+      <div id="shopList"></div>
+      <button id="shopClose">关闭</button>
+    </div>
+  </div>
+
+  <!-- 完成提示(顶部非模态,不挡建筑) -->
+  <div class="banner" id="banner">
+    <div class="banner-emoji">✨</div>
+    <div class="banner-msg">
+      <div class="banner-title">这一间扫干净啦！</div>
+      <div class="banner-sub" id="bannerSub"></div>
+      <div class="banner-hint">开箱布置完，点左下角【完成】进下一关</div>
+    </div>
+  </div>
+
+  <!-- 完成按钮(清扫干净才出现,左下角,不挡建筑) -->
+  <button class="done-btn" id="doneBtn">✔ 完成</button>
+
+  <!-- 开始遮罩（满足音频自动播放手势策略 + 玩法说明） -->
+  <div class="start" id="start">
+    <h1>解压清扫 🧹</h1>
+    <p>单指拖 = 擦地 / 轻点家具 = 向左转 22.5° / 长按家具 = 布置<br/>手机：双指滑动 = 转视角 ｜ 电脑：右键拖动 = 转视角 · 滚轮缩放 · 随便玩，不计时</p>
+    <button id="startBtn">开始清扫</button>
+  </div>
+
+  <div id="err" style="display:none;position:fixed;inset:0;background:#222;color:#fff;align-items:center;justify-content:center;text-align:center;padding:24px;z-index:99;">
+    3D 资源加载失败（可能是网络或域名未授权）。<br/>请将本页面部署到已配置业务域名的 HTTPS 地址，并确保 three.js CDN 可访问。
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>
